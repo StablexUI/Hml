@@ -1,0 +1,5 @@
+-cp src
+--no-output
+-main GenHx
+-lib hml
+-lib stablexui-flash

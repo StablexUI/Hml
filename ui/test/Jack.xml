@@ -1,0 +1,17 @@
+<Person xmlns="test.base" xmlns:haxe="http://haxe.org/" age="32">
+    <!-- <haxe:Implements><![CDATA[IReader]]></haxe:Implements> -->
+
+    <name>
+        <Name first="'Jack'"/>
+    </name>
+
+    <favoriteNumbers>[3, 7, 21]</favoriteNumbers>
+
+    <Person>
+        <age>12</age>
+        <name>
+            <Name first="'Bill'"/>
+        </name>
+    </Person>
+
+</Person>

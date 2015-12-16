@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"name": "Test",
+			"path": "."
+		},
+		{
+			"name": "HML",
+			"path": "/home/kuzmenko/temp/hml"
+		},
+		{
+			"name": "Haxe",
+			"path": "/usr/lib/haxe/std"
+		}
+	]
+}

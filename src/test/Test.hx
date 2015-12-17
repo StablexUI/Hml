@@ -27,7 +27,7 @@ class Test
      */
     static public function run () : Void
     {
-        var panel = new Panel();
+        Sx.root.addChild(new Panel());
     }
 
 }//class Test

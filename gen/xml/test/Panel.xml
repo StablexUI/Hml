@@ -4,10 +4,18 @@
 >
     <haxe:Private>
         <Popup id="alert">
-            <Text text="'hello'"/>
+            <Text text="'Very important message!'"/>
+            <Button text="'OK'" onClick="alert.close();"/>
         </Popup>
     </haxe:Private>
 
-    <Button text="'Hello, world!'" right="20%" bottom="100dip" onClick="alert.show()"/>
+    <Button text="'Show alert'" right="20%" bottom="100dip">
+        <padding>
+            <vertical>5%</vertical>
+            <horizontal>10%</horizontal>
+        </padding>
+        <onClick>alert.show();</onClick>
+        <onPointerOver>trace('Ready to show!');</onPointerOver>
+    </Button>
 
 </Widget>

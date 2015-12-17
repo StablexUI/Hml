@@ -7,7 +7,7 @@
 		},
 		{
 			"name": "HML",
-			"path": "/home/kuzmenko/temp/hml"
+			"path": "../hml"
 		},
 		{
 			"name": "Haxe",
@@ -15,27 +15,27 @@
 		},
 		{
 			"name": "Sx2 Core",
-			"path": "/home/kuzmenko/temp/sx2-core"
+			"path": "../sx2-core"
 		},
 		{
 			"name": "Sx2 Flash Backend",
-			"path": "/home/kuzmenko/temp/sx2-flash"
+			"path": "../sx2-flash"
 		},
 		{
 			"name": "Sx2 Theme FlatUI",
-			"path": "/home/kuzmenko/temp/sx2-theme-flatui"
+			"path": "../sx2-theme-flatui"
 		},
 		{
 			"name": "Sx2 Examples",
-			"path": "/home/kuzmenko/temp/sx2-examples"
+			"path": "../sx2-examples"
 		},
 		{
 			"name": "Sx2 Tests",
-			"path": "/home/kuzmenko/temp/sx2-tests"
+			"path": "../sx2-tests"
 		},
 		{
 			"name": "Exception",
-			"path": "/home/kuzmenko/temp/exception"
+			"path": "../exception"
 		}
 	]
 }

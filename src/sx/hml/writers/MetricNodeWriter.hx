@@ -1,4 +1,4 @@
-package sx.hml;
+package sx.hml.writers;
 
 import haxe.macro.Context;
 import hml.base.MatchLevel;
@@ -15,33 +15,14 @@ using sx.hml.Tools;
  * Description
  *
  */
-class HaxeNodeWriter extends BaseNodeWithMetaWriter
+class MetricNodeWriter extends BaseNodeWithMetaWriter
 {
     /** regexp to find xml attributes which has metric values */
-    static private var erMetricValue : EReg = ~/\s*([0-9.]+)\s*(px|dip|%)\s*/;
-
-
-    override public function match (node:Node) : MatchLevel
-    {
-        return super.match(node);
-    }
-
-
-    override public function write (node:Node, writer:IHaxeWriter<Node>) : Void
-    {
-        super.write(node, writer);
-    }
-
-
-    override public function writeAttribute(node:Node, scope:String, child:Node, writer:IHaxeWriter<Node>, method:Array<String>) : Void
-    {
-        super.writeAttribute(node, scope, child, writer, method);
-    }
+    static private var erMetricValue : EReg = ~/\s*([0-9.]+)\s*(px|dip|%|pct)\s*/;
 
 
     override function writeNodes(node:Node, scope:String, writer:IHaxeWriter<Node>, method:Array<String>)
     {
-        handleSignalNodes(node.nodes);
         standardizeMetricNodes(node.nodes);
         super.writeNodes(node, scope, writer, method);
     }
@@ -80,18 +61,4 @@ class HaxeNodeWriter extends BaseNodeWithMetaWriter
         }
     }
 
-
-    /**
-     * Create signal handlers using nodes which represent signals
-     */
-    private function handleSignalNodes (nodes:Iterable<Node>) : Void
-    {
-        var isSignal;
-        for (node in nodes) {
-            if (!node.isSignalNode()) continue;
-
-            trace(node.nativeType.countSignalArguments());
-        }
-    }
-
-}//class HaxeNodeWriter
+}//class MetricNodeWriter

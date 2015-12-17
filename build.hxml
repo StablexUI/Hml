@@ -1,5 +1,11 @@
 -cp src
---no-output
--main GenHx
+-cp gen/src
+-main test.Test
 -lib hml
 -lib stablexui-flash
+-lib stablexui-theme-flatui
+-swf-header 1024:600:60:FFFFFF
+-swf-version 11.3
+-swf build/flatui.swf
+
+-cmd fdb build/flatui.swf

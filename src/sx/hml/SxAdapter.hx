@@ -1,5 +1,6 @@
 package sx.hml;
 
+#if macro
 import hml.xml.adapters.base.MergedAdapter;
 import hml.xml.adapters.DefaultXMLAdapter;
 import hml.xml.Data;
@@ -35,3 +36,4 @@ class SxAdapter extends MergedAdapter<XMLData, Node, Type>
     }
 
 }//class SxAdapter
+#end

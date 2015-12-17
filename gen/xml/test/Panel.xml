@@ -1,0 +1,8 @@
+<Widget xmlns="sx.widgets" xmlns:haxe="http://haxe.org/"
+    width  = "600"
+    height = "400px"
+>
+
+    <Button text="'Hello, world!'" right="20%" bottom="100dip"/>
+
+</Widget>

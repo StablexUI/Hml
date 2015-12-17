@@ -1,8 +1,11 @@
 package sx.hml;
 
-import hml.xml.adapters.IAdapter;
+import haxe.macro.Expr;
+import hml.base.MatchLevel;
+import hml.xml.adapters.base.BaseMetaAdapter;
 import hml.xml.Data;
 import hml.xml.reader.IXMLParser;
+import hml.xml.typeResolver.DefaultHaxeTypeResolver;
 import hml.xml.typeResolver.IHaxeTypeResolver;
 import hml.xml.writer.IHaxeWriter;
 
@@ -12,7 +15,7 @@ import hml.xml.writer.IHaxeWriter;
  * Description
  *
  */
-class WidgetAdapter implements IAdapter<XMLData, Node, Type>
+class WidgetAdapter extends BaseMetaAdapter
 {
 
     /**
@@ -20,31 +23,36 @@ class WidgetAdapter implements IAdapter<XMLData, Node, Type>
      */
     public function new () : Void
     {
+        var baseType   = macro:sx.widgets.Widget;
+        var meta       = new Map();
+        var matchLevel = CustomLevel(ClassLevel, 50);
+        var metaWriter = new MetaWriter();
 
+        super(baseType, meta, metaWriter, matchLevel);
     }
 
 
-    public function getXmlNodeParsers () : Array<IXMLNodeParser<XMLData>>
+    override public function getXmlNodeParsers () : Array<IXMLNodeParser<XMLData>>
     {
-        return null;
+        return super.getXmlNodeParsers();
     }
 
 
-    public function getXmlDataNodeParsers () : Array<IXMLDataNodeParser<XMLData, Node, Node>>
+    override public function getXmlDataNodeParsers () : Array<IXMLDataNodeParser<XMLData, Node, Node>>
     {
-        return null;
+        return super.getXmlDataNodeParsers();
     }
 
 
-    public function getTypeResolvers () : Array<IHaxeTypeResolver<Node, Type>>
+    override public function getTypeResolvers () : Array<IHaxeTypeResolver<Node, Type>>
     {
-        return [new HaxeTypeResolver()];
+        return [new HaxeTypeResolver(baseType, meta)];
     }
 
 
-    public function getNodeWriters () : Array<IHaxeNodeWriter<Node>>
+    override public function getNodeWriters () : Array<IHaxeNodeWriter<Node>>
     {
-        return null;
+        return [new HaxeNodeWriter(baseType, metaWriter, matchLevel)];
     }
 
 

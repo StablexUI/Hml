@@ -15,7 +15,7 @@ class GenHx
     macro static function initHML() {
         sx.hml.SxAdapter.register();
 
-        return macro hml.Hml.parse({path:"gen"}, "ui");
+        return macro hml.Hml.parse({path:"gen/src"}, "gen/xml");
     }
 
 }

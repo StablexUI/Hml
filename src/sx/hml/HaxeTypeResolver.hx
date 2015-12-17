@@ -2,7 +2,7 @@ package sx.hml;
 
 import haxe.macro.Type in MacroType;
 import hml.xml.Data;
-import hml.xml.typeResolver.IHaxeTypeResolver;
+import hml.xml.adapters.base.BaseMetaAdapter;
 
 
 
@@ -10,32 +10,20 @@ import hml.xml.typeResolver.IHaxeTypeResolver;
  * Description
  *
  */
-class HaxeTypeResolver implements IHaxeTypeResolver<Node, Type>
+class HaxeTypeResolver extends BaseMetaResolver
 {
 
-    public var types:Map<String, Type>;
-
-
-    /**
-     * Constructor
-     */
-    public function new () : Void
+    override public function getNativeType (node:Node) : Null<MacroType>
     {
-        types = new Map();
+        // trace('getNativeType ${node.name}, super: ${node.superType}');
+        return super.getNativeType(node);
     }
 
 
-    public function getNativeType (node:Node) : Null<MacroType>
+    override public function getFieldNativeType (node:Node, qName:XMLQName) : Null<MacroType>
     {
-        trace('getNativeType ${node.name}');
-        return null;
-    }
-
-
-    public function getFieldNativeType (node:Node, qName:XMLQName) : Null<MacroType>
-    {
-        trace('getFieldNativeType ${node.name} $qName');
-        return null;
+        // trace('getFieldNativeType ${node.name} $qName');
+        return super.getFieldNativeType(node, qName);
     }
 
 }//class HaxeTypeResolver

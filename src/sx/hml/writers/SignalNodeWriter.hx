@@ -33,10 +33,33 @@ class SignalNodeWriter extends BaseNodeWithMetaWriter
         var expr      = child.cData;
 
         writeNodePos(child, method);
-        method.push('$scope.$signal.add(function($args) {');
-        method.push('\t$expr');
-        method.push('});');
+        if (isFunctionDeclaration(expr)) {
+            method.push('$scope.$signal.add(');
+            method.push('\t$expr');
+            method.push(');');
+        } else {
+            method.push('$scope.$signal.add(function($args) {');
+            method.push('\t$expr');
+            method.push('});');
+        }
     }
 
+
+    /**
+     * Indicates if `expr` is something like `function() someExpr`
+     */
+    private function isFunctionDeclaration (exprString:String) : Bool
+    {
+        var expr = try {
+            Context.parse(exprString, Context.currentPos());
+        } catch(e:Error) {
+            macro null;
+        }
+
+        return switch (expr.expr) {
+            case EFunction(_,_) : true;
+            case _              : false;
+        }
+    }
 
 }//class SignalNodeWriter

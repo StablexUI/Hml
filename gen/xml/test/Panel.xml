@@ -1,8 +1,13 @@
 <Widget xmlns="sx.widgets" xmlns:haxe="http://haxe.org/"
     width  = "600"
-    height = "400px"
+    height = "400"
 >
+    <haxe:Private>
+        <Popup id="alert">
+            <Text text="'hello'"/>
+        </Popup>
+    </haxe:Private>
 
-    <Button text="'Hello, world!'" right="20%" bottom="100dip"/>
+    <Button text="'Hello, world!'" right="20%" bottom="100dip" onClick="alert.show()"/>
 
 </Widget>

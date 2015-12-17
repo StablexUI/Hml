@@ -7,6 +7,9 @@ import hml.xml.writer.base.StringNode;
 import hml.xml.writer.IHaxeWriter;
 import hml.xml.adapters.base.BaseMetaAdapter;
 
+using sx.hml.Tools;
+
+
 
 /**
  * Description
@@ -15,7 +18,7 @@ import hml.xml.adapters.base.BaseMetaAdapter;
 class HaxeNodeWriter extends BaseNodeWithMetaWriter
 {
     /** regexp to find xml attributes which has metric values */
-    static private var erMetricValue : EReg = ~/\s*([0-9.]+)(px|dip|%)\s*/;
+    static private var erMetricValue : EReg = ~/\s*([0-9.]+)\s*(px|dip|%)\s*/;
 
 
     override public function match (node:Node) : MatchLevel
@@ -38,6 +41,7 @@ class HaxeNodeWriter extends BaseNodeWithMetaWriter
 
     override function writeNodes(node:Node, scope:String, writer:IHaxeWriter<Node>, method:Array<String>)
     {
+        handleSignalNodes(node.nodes);
         standardizeMetricNodes(node.nodes);
         super.writeNodes(node, scope, writer, method);
     }
@@ -73,6 +77,20 @@ class HaxeNodeWriter extends BaseNodeWithMetaWriter
                 node.name.name += '.$field';
                 node.cData = value;
             }
+        }
+    }
+
+
+    /**
+     * Create signal handlers using nodes which represent signals
+     */
+    private function handleSignalNodes (nodes:Iterable<Node>) : Void
+    {
+        var isSignal;
+        for (node in nodes) {
+            if (!node.isSignalNode()) continue;
+
+            trace(node.nativeType.countSignalArguments());
         }
     }
 

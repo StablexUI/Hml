@@ -36,6 +36,10 @@
 		{
 			"name": "Exception",
 			"path": "../exception"
+		},
+		{
+			"name": "Bindx2",
+			"path": "~/haxelib/bindx2/2,5,2/"
 		}
 	]
 }

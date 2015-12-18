@@ -2,6 +2,7 @@
 -cp gen/src
 -main test.Test
 -lib hml
+-lib bindx2
 -lib stablexui-flash
 -lib stablexui-theme-flatui
 -swf-header 1024:600:60:FFFFFF

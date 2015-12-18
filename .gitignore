@@ -1,2 +1,4 @@
 sx2-core.sublime-workspace
+gen/src/*
 build/*
+dump/*

@@ -3,5 +3,6 @@
 --no-output
 -main GenHx
 -lib hml
+-lib bindx2
 -lib stablexui-flash
 --macro allowPackage('flash')

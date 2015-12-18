@@ -4,7 +4,7 @@ package sx.hml;
 import hml.xml.adapters.base.MergedAdapter;
 import hml.xml.adapters.DefaultXMLAdapter;
 import hml.xml.Data;
-import hml.xml.XMLProcessor;
+import sx.hml.processor.XMLProcessor;
 
 
 

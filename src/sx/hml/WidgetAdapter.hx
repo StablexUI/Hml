@@ -4,6 +4,7 @@ import hml.base.MatchLevel;
 import hml.xml.adapters.base.BaseMetaAdapter;
 import hml.xml.Data;
 import hml.xml.writer.IHaxeWriter;
+import sx.hml.writers.ChildWidgetNodeWriter;
 import sx.hml.writers.MetaWriter;
 import sx.hml.writers.MetricNodeWriter;
 import sx.hml.writers.SignalNodeWriter;
@@ -34,8 +35,9 @@ class WidgetAdapter extends BaseMetaAdapter
     override public function getNodeWriters () : Array<IHaxeNodeWriter<Node>>
     {
         return [
+            new ChildWidgetNodeWriter(baseType, metaWriter, matchLevel),
             new MetricNodeWriter(baseType, metaWriter, CustomLevel(matchLevel, 1)),
-            new SignalNodeWriter(baseType, metaWriter, CustomLevel(matchLevel, 2))
+            new SignalNodeWriter(baseType, metaWriter, CustomLevel(matchLevel, 2)),
         ];
     }
 

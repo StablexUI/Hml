@@ -1,9 +1,10 @@
-package ;
+package sx.hml;
+
 
 /**
  * Entry point for HML generation phase.
  */
-class GenHx
+class Generator
 {
 
     static function main()
@@ -15,7 +16,10 @@ class GenHx
     macro static function initHML() {
         sx.hml.SxAdapter.register();
 
-        return macro hml.Hml.parse({path:"gen/src"}, "gen/xml");
+        var sourcePath      = "hml/xml";
+        var destinationPath = "hml/gen";
+
+        return macro hml.Hml.parse({path:$v{destinationPath}}, $v{sourcePath});
     }
 
 }

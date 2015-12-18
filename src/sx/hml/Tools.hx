@@ -24,26 +24,38 @@ class Tools
         //     return false;
         // }
 
-        return isSignalType(node.nativeType);
+        return isOfType(node.nativeType, 'sx.signals.Signal.Signal');
     }
 
 
     /**
-     * Check if specified type is a signal type
+     * Check if specified node represents metric property
      */
-    static public function isSignalType (type:Type) : Bool
+    static public function isMetricNode (node:Node) : Bool
+    {
+        return isOfType(node.nativeType, 'sx.properties.metric.Size.Size');
+    }
+
+
+
+    /**
+     * Check if specified type is a descendant of `requiredType` or `requireType` itself
+     */
+    static public function isOfType (type:Type, requiredType:String) : Bool
     {
         type = type.follow();
         switch (type) {
+            case TAbstract(_.get() => abstractType, _):
+                return isOfType(abstractType.type, requiredType);
             case TInst(_.get() => t, _):
                 var fullTypeName = t.module + '.' + t.name;
-                if (fullTypeName == 'sx.signals.Signal.Signal') {
+                if (fullTypeName == requiredType) {
                     return true;
                 }
 
                 if (t.superClass != null) {
                     var superTypeName = t.superClass.t.toString();
-                    return isSignalType(Context.getType(superTypeName));
+                    return isOfType(Context.getType(superTypeName), requiredType);
                 }
             case _:
         }

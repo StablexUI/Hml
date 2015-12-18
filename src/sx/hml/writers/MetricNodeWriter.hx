@@ -3,7 +3,6 @@ package sx.hml.writers;
 import haxe.macro.Context;
 import hml.base.MatchLevel;
 import hml.xml.Data;
-import hml.xml.writer.base.StringNode;
 import hml.xml.writer.IHaxeWriter;
 import hml.xml.adapters.base.BaseMetaAdapter;
 
@@ -21,20 +20,28 @@ class MetricNodeWriter extends BaseNodeWithMetaWriter
     static private var erMetricValue : EReg = ~/\s*([0-9.]+)\s*(px|dip|%|pct)\s*/;
 
 
-    override function writeNodes(node:Node, scope:String, writer:IHaxeWriter<Node>, method:Array<String>)
+    override public function match (node:Node) : MatchLevel
     {
-        standardizeMetricNodes(node.nodes);
-        super.writeNodes(node, scope, writer, method);
+        return (node.isMetricNode() ? matchLevel : None);
     }
 
 
-    override function child(node:Node, scope:String, child:Node, method:Array<String>, assign = false) : Void
+    override public function writeAttribute(node:Node, scope:String, child:Node, writer:IHaxeWriter<Node>, method:Array<String>) : Void
     {
-        if (!assign) {
-            method.push(StringNode.ifCond(child, '$scope.addChild(${universalGet(child)});'));
-        } else {
-            super.child(node, scope, child, method, assign);
+        var value = child.cData;
+        if (value != null && erMetricValue.match(value)) {
+            value = erMetricValue.matched(1);
+            var units = erMetricValue.matched(2);
+            var field = switch (units) {
+                case '%' : 'pct';
+                case _   : units;
+            }
+
+            child.name.name += '.$field';
+            child.cData = value;
         }
+
+        super.writeAttribute(node, scope, child, writer, method);
     }
 
 

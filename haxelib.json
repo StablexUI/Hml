@@ -1,0 +1,15 @@
+{
+    "name"         : "stablexui-hml",
+    "url"          : "https://github.com/StablexUI/Hml",
+    "license"      : "MIT",
+    "tags"         : ["xml", "hml"],
+    "description"  : "StablexUI adapter for HML.",
+    "version"      : "2.0.0-alpha",
+    "releasenote"  : "Initial release. ",
+    "classPath"    : "src",
+    "contributors" : ["RealyUniqueName"],
+    "dependencies" : {
+        "stablexui-core" : "",
+        "hml"            : ""
+    }
+}

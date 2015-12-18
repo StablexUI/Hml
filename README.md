@@ -8,7 +8,7 @@ haxelib git hml https://github.com/profelis/hml.git
 haxelib git stablexui-hml https://github.com/StablexUI/Hml master
 ```
 
-Usage with `hxml` project files
+Using with `hxml` project files
 -------------------------------
 Put your xml files in `<project_root>/hml/xml`.  
 Generated files will be written to `<preject_root>/hml/gen`. Add it to your classpaths.
@@ -35,9 +35,9 @@ You need to create `hml.hxml` like this:
 And run it with `haxe hml.hxml` before `haxe build.hxml`.
 
 
-Usage with OpenFL and NME
+Using with OpenFL and NME
 -------------------------
-Add to yor project configuration file this section:
+Add to your project configuration file this section:
 ```xml
 <source path="hml/gen" />
 <section if="hml">
@@ -51,4 +51,4 @@ And run `openfl build <platform> -Dhml` before `openfl build <platform>`.
 
 Example
 -----------
-See [usage example](https://github.com/StablexUI/Examples/tree/master/hml/)
+See [example](https://github.com/StablexUI/Examples/tree/master/hml/)

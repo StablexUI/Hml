@@ -19,9 +19,10 @@ class Tools
      */
     static public function isSignalNode (node:Node) : Bool
     {
-        if (node.name.name.indexOf('on') != 0) {
-            return false;
-        }
+        // var finalProperty = node.name.name.split('.').pop();
+        // if (finalProperty.indexOf('on') != 0) {
+        //     return false;
+        // }
 
         return isSignalType(node.nativeType);
     }

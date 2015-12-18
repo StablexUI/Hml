@@ -27,10 +27,8 @@ class SignalNodeWriter extends BaseNodeWithMetaWriter
 
     override public function writeAttribute(node:Node, scope:String, child:Node, writer:IHaxeWriter<Node>, method:Array<String>) : Void
     {
-        var signal    = child.name.name;
-        var argsCount = child.nativeType.countSignalArguments();
-        var args      = [for (i in 0...argsCount) '__$i'].join(', ');
-        var expr      = child.cData;
+        var signal = child.name.name;
+        var expr   = child.cData;
 
         writeNodePos(child, method);
         if (isFunctionDeclaration(expr)) {
@@ -38,6 +36,8 @@ class SignalNodeWriter extends BaseNodeWithMetaWriter
             method.push('\t$expr');
             method.push(');');
         } else {
+            var argsCount = child.nativeType.countSignalArguments();
+            var args      = [for (i in 0...argsCount) '__$i'].join(', ');
             method.push('$scope.$signal.add(function($args) {');
             method.push('\t$expr');
             method.push('});');

@@ -1,4 +1,3 @@
 *.sublime-*
-gen/src/*
 build/*
 dump/*

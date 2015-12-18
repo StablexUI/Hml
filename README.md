@@ -8,6 +8,34 @@ haxelib git hml https://github.com/profelis/hml.git
 haxelib git stablexui-hml https://github.com/StablexUI/Hml master
 ```
 
+Special cases
+-------------
+* Values for metric properties can be specified with units (DIPS by default):
+```xml
+<Widget left="20%" top="100px" height="200dip" width="300" />
+```
+* StablexUI enums are imported automatically, so you can use them without fully qualified names:
+```
+<Box align="Right & Bottom" orientation="Horizontal" />
+```
+* Signal handlers
+    * If you dont need to use signal arguments
+    ```xml
+    <Button onTrigger="trace('Button triggered!');" />
+    ```
+    * If you need to use signal arguments, then you must define a closure with the same amount of arguments
+    ```xml
+    <Button name="'myButton'" onTrigger=" function(btn) trace(btn.name + ' triggered'); " />
+    ```
+    * If you need to define multiple handlers for the same signal
+    ```xml
+    <Button>
+        <onTrigger>trace('first handler');</onTrigger>
+        <onTrigger>trace('second handler');</onTrigger>
+    </Button>
+    ```
+
+
 Using with `hxml` project files
 -------------------------------
 Put your xml files in `<project_root>/hml/xml`.  

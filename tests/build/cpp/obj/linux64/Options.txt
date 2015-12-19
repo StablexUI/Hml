@@ -1,3 +1,0 @@
-HXCPP_STACK_TRACE=1
-hxcpp_api_level=321
-hxcpp=/home/alex/haxelib/hxcpp/3,2,193/

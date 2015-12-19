@@ -44,8 +44,8 @@ Generated files will be written to `<preject_root>/hml/gen`. Add it to your clas
 Now if your `build.hxml` looks like this:
 ```
 -main Main
--cp hml/gen
 
+-cp hml/gen
 -lib someLib
 -lib anotherLib
 -swf bin/app.swf
@@ -56,6 +56,7 @@ You need to create `hml.hxml` like this:
 --no-output
 -lib stablexui-hml
 
+-cp hml/gen
 -lib someLib
 -lib anotherLib
 -swf bin/app.swf

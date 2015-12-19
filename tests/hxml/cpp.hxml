@@ -1,0 +1,3 @@
+hxml/common-build.hxml
+-cpp build/cpp
+-D HXCPP_STACK_TRACE

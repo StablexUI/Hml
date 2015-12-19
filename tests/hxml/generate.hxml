@@ -1,0 +1,4 @@
+hxml/common.hxml
+-main sx.hml.Generator
+--no-output
+-neko build/neko.n

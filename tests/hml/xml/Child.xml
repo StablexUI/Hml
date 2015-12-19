@@ -1,0 +1,5 @@
+<Widget xmlns="sx.widgets">
+    <Widget id="level1">
+        <Widget id="level2"/>
+    </Widget>
+</Widget>

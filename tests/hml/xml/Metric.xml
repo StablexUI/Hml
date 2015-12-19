@@ -1,0 +1,7 @@
+<Widget xmlns="sx.widgets">
+
+    <Widget id="dips" left="10dip" />
+    <Widget id="pixels" left="10px" />
+    <Widget id="percents" left="10%" />
+
+</Widget>

@@ -31,10 +31,17 @@ class SignalNodeWriter extends BaseNodeWithMetaWriter
         var expr   = child.cData;
 
         writeNodePos(child, method);
-        if (isFunctionDeclaration(expr)) {
-            method.push('$scope.$signal.add(');
+        var isClosure = false;
+        try {
+            isClosure = isFunctionDeclaration(expr);
+        } catch(e:Error) {
+            Context.error(e.message, Context.makePosition(node.model.nodePos));
+        }
+
+        if (isClosure) {
+            method.push('$scope.$signal.add({');
             method.push('\t$expr');
-            method.push(');');
+            method.push('});');
         } else {
             var argsCount = child.nativeType.countSignalArguments();
             var args      = [for (i in 0...argsCount) '__$i'].join(', ');
@@ -50,15 +57,15 @@ class SignalNodeWriter extends BaseNodeWithMetaWriter
      */
     private function isFunctionDeclaration (exprString:String) : Bool
     {
-        var expr = try {
-            Context.parse(exprString, Context.currentPos());
-        } catch(e:Error) {
-            macro null;
-        }
+        var expr = Context.parse('{$exprString}', Context.currentPos());
 
-        return switch (expr.expr) {
-            case EFunction(_,_) : true;
-            case _              : false;
+        return switch (expr) {
+            case macro {$e;}:
+                return switch (e.expr) {
+                    case EFunction(_,_) : true;
+                    case _              : false;
+                }
+            case _: false;
         }
     }
 

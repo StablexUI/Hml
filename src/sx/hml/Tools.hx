@@ -19,11 +19,6 @@ class Tools
      */
     static public function isSignalNode (node:Node) : Bool
     {
-        // var finalProperty = node.name.name.split('.').pop();
-        // if (finalProperty.indexOf('on') != 0) {
-        //     return false;
-        // }
-
         return isOfType(node.nativeType, 'sx.signals.Signal.Signal');
     }
 
@@ -45,7 +40,17 @@ class Tools
     {
         type = type.follow();
         switch (type) {
-            case TAbstract(_.get() => abstractType, _):
+            case TAbstract(ref, _):
+                var name = ref.toString();
+                var abstractType = ref.get();
+                switch (abstractType.type) {
+                    case TAbstract(_.toString() => nextName,_):
+                        if (name == nextName) {
+                            return false;
+                        }
+                    case _:
+                }
+
                 return isOfType(abstractType.type, requiredType);
             case TInst(_.get() => t, _):
                 var fullTypeName = t.module + '.' + t.name;

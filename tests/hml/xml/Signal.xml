@@ -1,0 +1,12 @@
+<Widget xmlns="sx.widgets" xmlns:root="" xmlns:haxe="http://haxe.org/">
+    <haxe:Public>
+        <root:Bool id="simpleClicked">false</root:Bool>
+        <root:Bool id="closureBlockClicked">false</root:Bool>
+        <root:Bool id="closureSingleExprClicked">false</root:Bool>
+    </haxe:Public>
+
+    <Widget id="simple" onClick="simpleClicked = true;" />
+    <Widget id="closureBlockBody" onClick="function (processor, dispatcher, touchId) {closureBlockClicked = true;}" />
+    <Widget id="closureSingleExpr" onClick="function (processor, dispatcher, touchId) closureSingleExprClicked = true;" />
+
+</Widget>

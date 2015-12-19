@@ -1,0 +1,7 @@
+-cp ../src
+-cp hml/gen
+-lib stablexui-dummy
+-lib hunit
+-lib hml
+-D HUNIT_TEST_DIR=src
+-debug

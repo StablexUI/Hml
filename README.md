@@ -38,7 +38,7 @@ Special cases
 
 Using with `hxml` project files
 -------------------------------
-Put your xml files in `<project_root>/hml/xml`.  
+Put your xml files in `<project_root>/hml/xml`.
 Generated files will be written to `<preject_root>/hml/gen`. Add it to your classpaths.
 
 Now if your `build.hxml` looks like this:

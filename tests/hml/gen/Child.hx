@@ -16,8 +16,14 @@ class Child extends sx.widgets.Widget {
 
     @:isVar public var level2(get, set):sx.widgets.Widget;
 
-    public function destroyHml():Void {
+    private function destroyHml():Void {
         
+    }
+    
+
+    override public function dispose(disposeChildren:Bool = true):Void {
+        destroyHml();
+        super.dispose(disposeChildren);
     }
     
 

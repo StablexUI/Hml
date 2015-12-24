@@ -32,8 +32,14 @@ class Signal extends sx.widgets.Widget {
 
     @:isVar public var closureSingleExpr(get, set):sx.widgets.Widget;
 
-    public function destroyHml():Void {
+    private function destroyHml():Void {
         
+    }
+    
+
+    override public function dispose(disposeChildren:Bool = true):Void {
+        destroyHml();
+        super.dispose(disposeChildren);
     }
     
 

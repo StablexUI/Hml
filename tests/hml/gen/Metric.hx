@@ -20,8 +20,14 @@ class Metric extends sx.widgets.Widget {
 
     @:isVar public var percents(get, set):sx.widgets.Widget;
 
-    public function destroyHml():Void {
+    private function destroyHml():Void {
         
+    }
+    
+
+    override public function dispose(disposeChildren:Bool = true):Void {
+        destroyHml();
+        super.dispose(disposeChildren);
     }
     
 

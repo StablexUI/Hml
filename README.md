@@ -34,6 +34,7 @@ Special cases
         <onTrigger>trace('second handler');</onTrigger>
     </Button>
     ```
+* `destroyHml()` will be automatically called when you `dispose()` widget created via xml
 
 
 Using with `hxml` project files

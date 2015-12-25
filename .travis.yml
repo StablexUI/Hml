@@ -35,5 +35,5 @@ install:
 script:
   - cd $TRAVIS_BUILD_DIR/tests
   - haxe hxml/generate.hxml
-  - HXFLAGS="-cp src -main HUnit -lib stablexui-dummy -D HXCPP_STACK_TRACE" ~/travis-hx/build.sh
+  - HXFLAGS="-cp src -cp hml/gen -main HUnit -lib hunit -lib stablexui-dummy -D HXCPP_STACK_TRACE -D HUNIT_TEST_DIR=src" ~/travis-hx/build.sh
   - ~/travis-hx/runtests.sh $FILENAME

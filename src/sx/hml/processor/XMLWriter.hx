@@ -73,14 +73,18 @@ class XMLWriter extends HmlXMLWriter
         var additional = super.getAdditionalNodes(type, allTypes);
 
         if (type.nativeType.isChildOf(macro:sx.widgets.Widget)) {
-            additional.push(
-                new StringNode(null,
-                    'override public function dispose(disposeChildren:Bool = true):Void {\n' +
-                    HmlXMLWriter.TAB + 'destroyHml();\n' +
-                    HmlXMLWriter.TAB + 'super.dispose(disposeChildren);\n' +
-                    '}\n'
-                )
-            );
+            //don't call `destroyHml()` if it will be called by super class
+            var access = getDestroyHmlAccess(type, allTypes);
+            if (access.indexOf(AOverride) < 0) {
+                additional.push(
+                    new StringNode(null,
+                        'override public function dispose(disposeChildren:Bool = true):Void {\n' +
+                        HmlXMLWriter.TAB + 'destroyHml();\n' +
+                        HmlXMLWriter.TAB + 'super.dispose(disposeChildren);\n' +
+                        '}\n'
+                    )
+                );
+            }
         }
 
         return additional;

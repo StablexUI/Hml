@@ -22,6 +22,17 @@ class DestroyHmlTest extends TestCase
 
 
     @test
+    public function XMLWriter_xmlExtendsAnotherXml_doesNotGenerateAnotherDestroyHmlCall () : Void
+    {
+        var ui = mock(DescendantOfXmlWidget).create();
+
+        expect(ui).destroyHml().once();
+
+        ui.dispose();
+    }
+
+
+    @test
     public function XMLWriter_xmlExtendsNonWidgetClass_generatesPublicDestroyHml () : Void
     {
         var nonWidget = new NonWidget();

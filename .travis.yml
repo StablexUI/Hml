@@ -1,0 +1,39 @@
+language: c # change this to objective-c to test on a mac machine
+sudo: required
+env:
+  global:
+    - HAXE_VER=3.2.1
+  matrix:
+    - TARGET=neko
+    - TARGET=cpp
+    - TARGET=java
+    - TARGET=cs
+    - TARGET=python
+    - TARGET=swf
+    - TARGET=js TOOLCHAIN=default
+    #- TARGET=js TOOLCHAIN=browser
+    #- TARGET=php
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - env: SOME_ENV_HERE=some_opt
+
+before_install:
+  - travis_retry git clone --depth=50 --branch=master git://github.com/waneck/travis-hx.git ~/travis-hx
+
+install:
+  - ~/travis-hx/setup.sh
+  - travis_retry haxelib install hunit
+  - travis_retry git clone https://github.com/StablexUI/Core
+  - travis_retry haxelib dev stablexui-core Core
+  - travis_retry git clone https://github.com/StablexUI/Dummy.git
+  - travis_retry haxelib dev stablexui-dummy Dummy
+  - travis_retry git clone destroyHml https://github.com/RealyUniqueName/hml.git
+  - travis_retry haxelib dev hml hml
+
+script:
+  - cd $TRAVIS_BUILD_DIR/tests
+  - haxe hxml/generate.hxml
+  - HXFLAGS="-cp src -main HUnit -lib stablexui-dummy -D HXCPP_STACK_TRACE" ~/travis-hx/build.sh
+  - ~/travis-hx/runtests.sh $FILENAME

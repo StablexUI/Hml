@@ -29,7 +29,7 @@ install:
   - travis_retry haxelib dev stablexui-core Core
   - travis_retry git clone https://github.com/StablexUI/Dummy.git
   - travis_retry haxelib dev stablexui-dummy Dummy
-  - travis_retry git clone -b destroyHml https://github.com/RealyUniqueName/hml.git
+  - travis_retry git clone https://github.com/RealyUniqueName/hml.git
   - travis_retry haxelib dev hml hml
 
 script:

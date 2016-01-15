@@ -1,4 +1,4 @@
-StablexUI backend for HML [![Build Status](https://travis-ci.org/StablexUI/Hml.svg)](https://travis-ci.org/StablexUI/Hml)
+StablexUI backend for HML [![Build Status](https://travis-ci.org/StablexUI/Hml.svg?branch=master)](https://travis-ci.org/StablexUI/Hml)
 =========================
 
 Installation

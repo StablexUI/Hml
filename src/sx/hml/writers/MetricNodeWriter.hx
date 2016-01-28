@@ -17,7 +17,7 @@ using sx.hml.Tools;
 class MetricNodeWriter extends BaseNodeWithMetaWriter
 {
     /** regexp to find xml attributes which has metric values */
-    static private var erMetricValue : EReg = ~/^\s*([0-9.]+)\s*(px|dip|%|pct)\s*$/;
+    static private var erMetricValue : EReg = ~/^\s*(-{0,1}[0-9.]+)\s*(px|dip|%|pct)\s*$/;
 
 
     override public function match (node:Node) : MatchLevel

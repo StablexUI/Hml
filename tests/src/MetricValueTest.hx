@@ -38,4 +38,14 @@ class MetricValueTest extends TestCase
     }
 
 
+    @test
+    public function negativeValue () : Void
+    {
+        var ui = new Metric();
+
+        assert.equal(Percent, ui.percents.left.units);
+        assert.isTrue(ui.negative.left.pct < 0);
+    }
+
+
 }//class MetricValueTest

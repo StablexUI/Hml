@@ -20,6 +20,10 @@ class Metric extends sx.widgets.Widget {
 
     @:isVar public var percents(get, set):sx.widgets.Widget;
 
+    var negative_initialized:Bool = false;
+
+    @:isVar public var negative(get, set):sx.widgets.Widget;
+
     private function destroyHml():Void {
         
     }
@@ -79,12 +83,29 @@ class Metric extends sx.widgets.Widget {
         return res;
     }
 
+    function set_negative(value:sx.widgets.Widget):sx.widgets.Widget {
+        negative_initialized = true;
+        return negative = value;
+    }
+
+    function get_negative():sx.widgets.Widget {
+        /* hml/xml/Metric.xml:6 characters: 5-11 */
+        if (negative_initialized) return negative;
+        negative_initialized = true;
+        this.negative = new sx.widgets.Widget();
+        var res = this.negative;
+        /* hml/xml/Metric.xml:6 characters: 27-31 */
+        res.left.pct = -50;
+        return res;
+    }
+
     public function new() {
         /* hml/xml/Metric.xml:1 characters: 1-7 */
         super();
         this.addChild(dips);
         this.addChild(pixels);
         this.addChild(percents);
+        this.addChild(negative);
     }
 
     
